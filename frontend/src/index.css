@@ -1,0 +1,120 @@
+:root {
+  --color-dark-50: #f8fafc;
+  --color-dark-100: #0f172a;
+  --color-dark-200: #1e293b;
+  --color-dark-300: #334155;
+  --color-dark-400: #475569;
+  --color-dark-500: #64748b;
+  --color-dark-600: #94a3b8;
+  --color-dark-700: #cbd5e1;
+  --color-dark-800: #e2e8f0;
+  --color-dark-900: #ffffff;
+  --color-dark-950: #f1f5f9;
+
+  --color-cyber-300: #4338ca;
+  --color-cyber-400: #4f46e5;
+  --color-cyber-500: #6366f1;
+
+  --color-risk-safe-text: #15803d;
+  --color-risk-safe-bg: rgba(34, 197, 94, 0.1);
+  --color-risk-safe-border: rgba(34, 197, 94, 0.2);
+
+  --color-risk-medium-text: #b45309;
+  --color-risk-medium-bg: rgba(245, 158, 11, 0.1);
+  --color-risk-medium-border: rgba(245, 158, 11, 0.2);
+
+  --color-risk-high-text: #c2410c;
+  --color-risk-high-bg: rgba(249, 115, 22, 0.1);
+  --color-risk-high-border: rgba(249, 115, 22, 0.2);
+
+  --color-risk-critical-text: #b91c1c;
+  --color-risk-critical-bg: rgba(239, 68, 68, 0.1);
+  --color-risk-critical-border: rgba(239, 68, 68, 0.2);
+}
+
+.dark-theme {
+  --color-dark-50: #f8fafc;
+  --color-dark-100: #f1f5f9;
+  --color-dark-200: #cbd5e1;
+  --color-dark-300: #94a3b8;
+  --color-dark-400: #64748b;
+  --color-dark-500: #475569;
+  --color-dark-600: #334155;
+  --color-dark-700: #1e293b;
+  --color-dark-800: #0f172a;
+  --color-dark-900: #0b0f19;
+  --color-dark-950: #020617;
+
+  --color-cyber-300: #b2bcff;
+  --color-cyber-400: #8593ff;
+  --color-cyber-500: #6366f1;
+
+  --color-risk-safe-text: #4ade80;
+  --color-risk-safe-bg: rgba(74, 222, 128, 0.1);
+  --color-risk-safe-border: rgba(74, 222, 128, 0.3);
+
+  --color-risk-medium-text: #facc15;
+  --color-risk-medium-bg: rgba(250, 204, 21, 0.1);
+  --color-risk-medium-border: rgba(250, 204, 21, 0.3);
+
+  --color-risk-high-text: #fb923c;
+  --color-risk-high-bg: rgba(251, 146, 60, 0.1);
+  --color-risk-high-border: rgba(251, 146, 60, 0.3);
+
+  --color-risk-critical-text: #f87171;
+  --color-risk-critical-bg: rgba(248, 113, 113, 0.1);
+  --color-risk-critical-border: rgba(248, 113, 113, 0.3);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-dark-700; }
+  body {
+    @apply bg-dark-950 text-dark-100 font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-dark-900; }
+  ::-webkit-scrollbar-thumb { @apply bg-dark-600 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-cyber-600; }
+}
+
+@layer components {
+  .glass {
+    @apply bg-dark-800/60 backdrop-blur-sm border border-dark-700/50;
+  }
+  .glass-hover {
+    @apply hover:bg-dark-800/80 hover:border-cyber-500/30 transition-all duration-200;
+  }
+  .cyber-border {
+    @apply border border-cyber-500/20;
+  }
+  .glow-text {
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  }
+  .risk-safe    { color: var(--color-risk-safe-text); background-color: var(--color-risk-safe-bg); border-color: var(--color-risk-safe-border); border-width: 1px; }
+  .risk-medium  { color: var(--color-risk-medium-text); background-color: var(--color-risk-medium-bg); border-color: var(--color-risk-medium-border); border-width: 1px; }
+  .risk-high    { color: var(--color-risk-high-text); background-color: var(--color-risk-high-bg); border-color: var(--color-risk-high-border); border-width: 1px; }
+  .risk-critical { color: var(--color-risk-critical-text); background-color: var(--color-risk-critical-bg); border-color: var(--color-risk-critical-border); border-width: 1px; }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 50%, rgba(99, 102, 241, 0.03) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+}

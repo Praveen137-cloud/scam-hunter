@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Scam Hunter AI Radar",
+  "version": "1.0.0",
+  "description": "Real-time in-browser safety checks for UPI IDs, phone numbers, and domains.",
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "http://127.0.0.1:8000/*",
+    "https://*.onrender.com/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  }
+}
